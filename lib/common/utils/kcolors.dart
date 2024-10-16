@@ -15,5 +15,5 @@ class HexColor extends Color {
 class Kolor {
   static const Color kWhite = Colors.white;
   static Color kPrimary = HexColor('#D0041F');
+  static Color kSecondary = HexColor('#E45D3E');
 }
-

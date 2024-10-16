@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       splitScreenMode: false,
       useInheritedMediaQuery: true,
       builder: (_, child) {
-        return MaterialApp.router(
+        return MaterialApp.router  (
           debugShowCheckedModeBanner: false,
           title: AppText.kAppName,
           theme: ThemeData(

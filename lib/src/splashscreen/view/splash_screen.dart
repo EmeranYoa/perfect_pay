@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:perfect_pay/common/services/storage.dart';
-import 'package:perfect_pay/common/utils/kcolors.dart';
 import 'package:perfect_pay/gen/assets.gen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -12,21 +10,21 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   @override
   void initState() {
     _navigator();
     super.initState();
   }
 
-  _navigator() async{
-    await Future.delayed(const Duration(milliseconds: 3000), (){
-      if(Storage.getBool("firstOpen") == null){
+  _navigator() async {
+    await Future.delayed(const Duration(milliseconds: 3000), () {
+      GoRouter.of(context).go('/onboarding');
+      /*if (Storage.getBool(Environment.isFirst) == null) {
         GoRouter.of(context).go('/onboarding');
-        Storage.setBool("firstOpen", true);
-      }else{
+        Storage.setBool(Environment.isFirst, true);
+      } else {
         GoRouter.of(context).go('/home');
-      }
+      }*/
     });
   }
 
@@ -38,12 +36,9 @@ class _SplashScreenState extends State<SplashScreen> {
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage(
-                  Assets.images.splashscreen.keyName
-              ),
+              image: AssetImage(Assets.images.splashscreen.keyName),
               alignment: Alignment.center,
-              fit: BoxFit.cover
-          ),
+              fit: BoxFit.cover),
         ),
       ),
     );

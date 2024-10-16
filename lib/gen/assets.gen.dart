@@ -12,6 +12,27 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/1.png
+  AssetGenImage get a1 => const AssetGenImage('assets/images/1.png');
+
+  /// File path: assets/images/12.png
+  AssetGenImage get a12 => const AssetGenImage('assets/images/12.png');
+
+  /// File path: assets/images/13.png
+  AssetGenImage get a13 => const AssetGenImage('assets/images/13.png');
+
+  /// File path: assets/images/2.png
+  AssetGenImage get a2 => const AssetGenImage('assets/images/2.png');
+
+  /// File path: assets/images/3.png
+  AssetGenImage get a3 => const AssetGenImage('assets/images/3.png');
+
+  /// File path: assets/images/4.png
+  AssetGenImage get a4 => const AssetGenImage('assets/images/4.png');
+
+  /// File path: assets/images/5.png
+  AssetGenImage get a5 => const AssetGenImage('assets/images/5.png');
+
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
@@ -20,17 +41,19 @@ class $AssetsImagesGen {
       const AssetGenImage('assets/images/splashscreen.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [logo, splashscreen];
+  List<AssetGenImage> get values =>
+      [a1, a12, a13, a2, a3, a4, a5, logo, splashscreen];
 }
 
 class Assets {
   Assets._();
 
   static const String aEnv = '.env.development';
+  static const String pEnv = '.env.production';
   static const $AssetsImagesGen images = $AssetsImagesGen();
 
   /// List of all assets
-  static List<String> get values => [aEnv, aEnv];
+  static List<String> get values => [aEnv, pEnv];
 }
 
 class AssetGenImage {
