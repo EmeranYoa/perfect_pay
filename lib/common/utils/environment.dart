@@ -18,10 +18,19 @@ class Environment {
   }
 
   static String get tokenKey {
-    return dotenv.env['TOKEN_KET'] ?? 'TOKEN_KEY not found';
+    return dotenv.env['TOKEN_KEY'] ?? 'TOKEN_KEY not found';
   }
 
   static String get isFirst {
     return dotenv.env['IS_FIRST'] ?? 'IS_FIRST not found';
+  }
+
+  static String get stripePublishableKey {
+    return dotenv.env['STRIPE_PUBLISHABLE_KEY'] ??
+        'STRIPE_PUBLISHABLE_KEY not found';
+  }
+
+  static String get appName {
+    return dotenv.env['APP_NAME'] ?? 'APP_NAME not found';
   }
 }

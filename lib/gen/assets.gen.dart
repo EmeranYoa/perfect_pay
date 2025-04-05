@@ -33,16 +33,48 @@ class $AssetsImagesGen {
   /// File path: assets/images/5.png
   AssetGenImage get a5 => const AssetGenImage('assets/images/5.png');
 
+  /// File path: assets/images/bg.png
+  AssetGenImage get bg => const AssetGenImage('assets/images/bg.png');
+
+  /// File path: assets/images/fi-rr-sign-out.png
+  AssetGenImage get fiRrSignOut =>
+      const AssetGenImage('assets/images/fi-rr-sign-out.png');
+
+  /// File path: assets/images/fi-rr-time-past 1.png
+  AssetGenImage get fiRrTimePast1 =>
+      const AssetGenImage('assets/images/fi-rr-time-past 1.png');
+
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
+
+  /// File path: assets/images/qr-code-2 1.png
+  AssetGenImage get qrCode21 =>
+      const AssetGenImage('assets/images/qr-code-2 1.png');
+
+  /// File path: assets/images/scan.png
+  AssetGenImage get scan => const AssetGenImage('assets/images/scan.png');
 
   /// File path: assets/images/splashscreen.png
   AssetGenImage get splashscreen =>
       const AssetGenImage('assets/images/splashscreen.png');
 
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [a1, a12, a13, a2, a3, a4, a5, logo, splashscreen];
+  List<AssetGenImage> get values => [
+        a1,
+        a12,
+        a13,
+        a2,
+        a3,
+        a4,
+        a5,
+        bg,
+        fiRrSignOut,
+        fiRrTimePast1,
+        logo,
+        qrCode21,
+        scan,
+        splashscreen
+      ];
 }
 
 class Assets {
@@ -86,7 +118,7 @@ class AssetGenImage {
     ImageRepeat repeat = ImageRepeat.noRepeat,
     Rect? centerSlice,
     bool matchTextDirection = false,
-    bool gaplessPlayback = false,
+    bool gaplessPlayback = true,
     bool isAntiAlias = false,
     String? package,
     FilterQuality filterQuality = FilterQuality.low,

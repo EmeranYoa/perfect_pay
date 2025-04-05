@@ -1,19 +1,10 @@
 import 'package:flutter/material.dart';
 
-class HexColor extends Color {
-  static int _getColorFromHex(String hexColor) {
-    hexColor = hexColor.toUpperCase().replaceAll("#", "");
-    if (hexColor.length == 6) {
-      hexColor = "FF$hexColor";
-    }
-    return int.parse(hexColor, radix: 16);
-  }
-
-  HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
-}
-
 class Kolor {
   static const Color kWhite = Colors.white;
-  static Color kPrimary = HexColor('#D0041F');
-  static Color kSecondary = HexColor('#E45D3E');
+  static Color kPrimary = const Color(0xFFD0041F);
+  static Color kSecondary = const Color(0xFFE45D3E);
+  static Color kAccent = const Color(0xFFE9680D);
+  static Color kTertiary = const Color(0xFFFDC964);
+  static Color kDisabled = const Color(0xFFB0B0B0);
 }

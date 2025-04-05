@@ -1,8 +1,10 @@
 import 'package:concentric_transition/concentric_transition.dart';
-import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:perfect_pay/common/utils/kcolors.dart';
+import 'package:perfect_pay/common/widgets/custom_icon_button.dart';
+import 'package:perfect_pay/common/widgets/indicator.dart';
 import 'package:perfect_pay/gen/assets.gen.dart';
 import 'package:perfect_pay/src/onboarding/view/pages/onboarding_item.dart';
 
@@ -33,16 +35,12 @@ class _OnboardingPageState extends State<OnboardingPage> {
   ];
 
   final PageController _pgController = PageController();
+
   int currentIndex = 0;
+
   @override
   void initState() {
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    _pgController.dispose();
-    super.dispose();
   }
 
   void _pgChange(int index) {
@@ -54,6 +52,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
     setState(() {
       currentIndex = index;
     });
+  }
+
+  void _navigateToLogin() {
+    GoRouter.of(context).go('/login');
   }
 
   @override
@@ -75,7 +77,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
             },
           ),
           Positioned(
-            bottom: 50,
+            bottom: 5.h,
             left: 0,
             right: 0,
             child: Padding(
@@ -88,78 +90,39 @@ class _OnboardingPageState extends State<OnboardingPage> {
                       ? SizedBox(
                           width: 35.w,
                         )
-                      : customIconButton(
+                      : CustomIconButton(
                           bgColor: Kolor.kSecondary,
                           icon: Icons.arrow_back_ios,
                           onPressed: () {
-                            int i = 0;
+                            int i = currentIndex;
                             if (currentIndex > 0) {
                               i -= 1;
                             }
                             _pgChange(i);
                           },
                         ),
-                  _dotIndicator(currentIndex, items.length),
-                  currentIndex == (items.length - 1)
-                      ? SizedBox(
-                          width: 35.w,
-                        )
-                      : customIconButton(
-                          bgColor: Kolor.kSecondary,
-                          icon: Icons.arrow_forward_ios,
-                          onPressed: () {
-                            int i = currentIndex;
-                            if (currentIndex < items.length) {
-                              i += 1;
-                            }
-                            _pgChange(i);
-                          },
-                        )
+                  Indicator(
+                    index: currentIndex,
+                    length: items.length,
+                  ),
+                  CustomIconButton(
+                    bgColor: Kolor.kSecondary,
+                    icon: Icons.arrow_forward_ios,
+                    onPressed: () {
+                      int i = currentIndex + 1;
+
+                      if (i == items.length) {
+                        _navigateToLogin();
+                      }
+
+                      _pgChange(i);
+                    },
+                  )
                 ],
               ),
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _dotIndicator(int index, int length) {
-    return DotsIndicator(
-      dotsCount: length,
-      position: index,
-      decorator: DotsDecorator(
-        color: Kolor.kWhite,
-        activeColor: Kolor.kSecondary,
-      ),
-    );
-  }
-
-  Widget customIconButton(
-      {required Color bgColor,
-      required IconData icon,
-      required void Function()? onPressed,
-      Color iconColor = Colors.white}) {
-    return Material(
-      color: Colors.transparent,
-      child: Center(
-        child: Ink(
-          decoration: ShapeDecoration(
-            color: bgColor,
-            shape: const CircleBorder(),
-          ),
-          child: SizedBox(
-            width: 35.w,
-            height: 35.h,
-            child: IconButton(
-              alignment: Alignment.center,
-              iconSize: 15.sp,
-              icon: Icon(icon),
-              color: iconColor,
-              onPressed: onPressed,
-            ),
-          ),
-        ),
       ),
     );
   }

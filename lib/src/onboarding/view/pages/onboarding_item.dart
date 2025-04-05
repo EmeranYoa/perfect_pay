@@ -6,11 +6,12 @@ class OnboardingItem extends StatelessWidget {
   final String subTitle;
   final String imagePath;
 
-  const OnboardingItem(
-      {super.key,
-      required this.title,
-      required this.subTitle,
-      required this.imagePath});
+  const OnboardingItem({
+    super.key,
+    required this.title,
+    required this.subTitle,
+    required this.imagePath,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class OnboardingItem extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
-          height: MediaQuery.of(context).size.height * 0.5,
+          height: MediaQuery.of(context).size.height * 0.65,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             image: DecorationImage(
@@ -27,9 +28,6 @@ class OnboardingItem extends StatelessWidget {
                 alignment: Alignment.center,
                 fit: BoxFit.cover),
           ),
-        ),
-        SizedBox(
-          height: 15.h,
         ),
         Padding(
           padding: const EdgeInsets.only(left: 20.0, right: 20.0),
@@ -39,7 +37,7 @@ class OnboardingItem extends StatelessWidget {
                 title,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 20.sp,
+                  fontSize: 16.sp,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
                 ),
@@ -47,7 +45,7 @@ class OnboardingItem extends StatelessWidget {
               Text(
                 subTitle,
                 style: TextStyle(
-                  fontSize: 16.sp,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.normal,
                   color: Colors.white,
                 ),
@@ -55,7 +53,7 @@ class OnboardingItem extends StatelessWidget {
               )
             ],
           ),
-        )
+        ),
       ],
     );
   }
